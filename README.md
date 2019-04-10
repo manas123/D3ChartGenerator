@@ -18,6 +18,7 @@ Pug
 D3.js
 Passport
 
-#public account: Login credentials
+## public account: Login credentials
+
 email: admin@gmail.com
 password: admin
