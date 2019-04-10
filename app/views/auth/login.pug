@@ -1,0 +1,18 @@
+extends ../layout
+block header
+  include ../_shared/navbar
+block footer
+  include ../_shared/footer
+block content
+  .login
+    .container
+      .row
+        .col-md-6.m-auto
+          h1.display-4.text-center Log In
+          p.lead.text-center Sign in to your Opex account
+          form.form(method="post",action='login')
+            .form-group
+              input.form-control.form-control-lg(type="email", name="email", placeholder="Email Address")
+            .form-group
+              input.form-control.form-control-lg(type="password", name="password", placeholder="Password")
+            input.btn.btn-info.btn-block.mt-4(type="submit")

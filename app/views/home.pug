@@ -1,0 +1,16 @@
+extends ./layout
+block header
+  include ./_shared/navbar
+block footer
+  include ./_shared/footer
+block content
+  .landing
+    .dark-overlay.landing-inner.text-light
+      .container
+        .row
+          .col-md-12.text-center
+            h1.display-3.mb-4 Opex
+            p.lead Upload CSVs to create charts
+            hr
+            a.btn.btn-lg.btn-info.mr-2(href="/signup") Sign Up
+            a.btn.btn-lg.btn-light(href="/login") Login

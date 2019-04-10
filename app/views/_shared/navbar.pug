@@ -1,0 +1,32 @@
+nav.navbar.navbar-expand-sm.navbar-dark.bg-dark.mb-4
+  .container
+    a.navbar-brand(href="/") Opex
+    button.navbar-toggler(type="button", data-toggle="collapse", data-target="#mobile-nav")
+      span.navbar-toggler-icon
+    div.collapse.navbar-collapse(id="mobile-nav")
+      ul.navbar-nav.mr-auto
+        li.nav-item
+          a.nav-link(href="/dashboard") Dashboard
+      if(passport)
+        ul.navbar-nav.ml-auto
+          //- li.nav-item
+          //-   a.nav-link(href="/feed") Post Feed
+          //- li.nav-item
+          //-   a.nav-link(href="/dashboard") Dashboard
+          li.nav-item
+            a.nav-link(href="/logout") Logout
+      else
+        ul.navbar-nav.ml-auto
+          li.nav-item
+            a.nav-link(href="/signup") Sign Up
+          li.nav-item
+            a.nav-link(href="/login") Login
+if (messages)
+  if (messages.success)
+    div(style="display: flex; justify-content: center; width: 100%;")
+      div.alert.alert-success.alert-fade-custom.clearfix(style="text-align: center; height: 40px; padding-top: 8px; float: left; width: 90%; z-index: 50;")
+        strong #{messages.success[0]}
+  else if (messages.error)
+    div(style="display: flex; justify-content: center; width: 100%;")
+      div.alert.alert-danger.alert-fade-custom.clearfix(style="text-align: center; height: 40px; padding-top: 8px; float: left; width: 90%; z-index: 50;")
+        strong #{messages.error[0]}

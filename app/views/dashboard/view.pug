@@ -1,0 +1,139 @@
+extends ../layout
+block header
+  include ../_shared/navbar
+block footer
+  include ../_shared/footer
+block content
+  .container
+    .row
+      .col-5
+        h6.text-grey Upload Configuration File: 
+        form.form(ref='uploadForm',method="post",action='uploadLoadMaster',encType="multipart/form-data")
+          .row 
+            .col-9
+              .form-group
+                .custom-file
+                  input(type="file" class="custom-file-input" id="loadmasterFile" name="loadmaster")
+                  label(class="custom-file-label" for="loadMasterFile") Choose file
+                p.text-danger#upload-loadmaster-file-state
+            .col-3
+              input.btn.btn-info.btn-block.mt-4#loadMasterSubmit(type="submit" style="margin-top: 0 !important;" disabled)
+      .col-5.offset-md-2
+        h6.text-grey Upload Shipment File: 
+        form.form(ref='uploadForm',method="post",action='uploadShipments',encType="multipart/form-data")
+          .row 
+            .col-9
+              .form-group
+                .custom-file
+                  input(type="file" class="custom-file-input" id="shipmentsFile" name="shipments")
+                  label(class="custom-file-label" for="shipmentsFile") Choose file
+                p.text-danger#upload-shipments-file-state
+            .col-3
+              input.btn.btn-info.btn-block.mt-4#shipmentsSubmit(type="submit" style="margin-top: 0 !important;" disabled)
+  br
+  br
+  .container
+    .row
+      h6.text-grey 
+        u Choose Configuration and Shipment file to generate Graph: 
+    .row
+      form.form.w-100(method="post",action='chartview')
+        .row
+          .col-3
+            .form-group
+              label(for="loadmaster") Select LoadMaster:
+              select.form-control#selectloadmasterid(name = "loadmasterid")
+                option(value=null) Select
+                if(loadmasters_ids.length > 0)
+                  each val, ind in loadmasters_ids
+                    option(value=val) #{val}
+          .col-3
+            .form-group
+              label(for="loadmaster") Select Shipments Upload:
+              select.form-control#selectshipmentid(name = "shipmentsuploadid")
+                option(value=null) Select
+                if(shipmentuploads_ids.length > 0)
+                  each val, ind in shipmentuploads_ids
+                    option(value=val) #{val}
+          .col-2(style="margin: 0 auto !important;")
+            input.btn.btn-info.btn-block.mt-4#chartSubmit(type="submit" value="Create Chart" disabled)
+  br  
+  br
+  br
+  .container
+    .row
+      h6.text-muted.text-center Load Masters Table: (List of configuration uploads)
+    .row
+      if(loadmasters.length > 0)
+        .table-responsive
+          table.table.table-striped.table-bordered.table-hover#loadmaster-table
+            thead.table-primary
+              tr
+                th S.No.
+                th Table Name
+                th Master Circle
+                th Parent Circle
+                th Children Circle
+                th Parent Size
+                th Children Size
+                th Parent Tooltip
+                th Children Tooltip
+                th Created Date
+                th Created Time
+            tbody
+              each val, ind in loadmasters
+                tr
+                  td #{val.id}
+                  td #{val.table}
+                  td #{val.master_circle}
+                  td #{val.parent_circle}
+                  td #{val.children_circle}
+                  td #{val.parent_size}
+                  td #{val.children_size}
+                  td #{val.parent_tooltip}
+                  td #{val.children_tooltip}
+                  td #{new Date(val.updatedAt).toDateString()}
+                  td #{new Date(val.updatedAt).toTimeString().substring(0,8)}
+      else
+        .table-responsive.text-center
+          table.table.table-striped.table-bordered
+            thead.thead-dark
+              tr
+                th ?
+            tbody
+              tr
+                td
+                  | No data available ! Please add data
+  br
+  br
+  .container
+    .row
+      h6.text-muted.text-center Shipment Uploads Table: (List of shipment csv file uploads)
+    .row
+      if(shipmentuploads.length > 0)
+        .table-responsive.w-50
+          table.table.table-striped.table-bordered.table-hover#shipmentuploads-table
+            thead.table-primary
+              tr
+                th UniqueID
+                th Upload Size
+                th Created Date
+                th Created Time
+            tbody
+              each val, ind in shipmentuploads
+                tr
+                  td #{val.uniqueId}
+                  td #{val.uploadSize}
+                  td #{new Date(val.updatedAt).toDateString()}
+                  td #{new Date(val.updatedAt).toTimeString().substring(0,8)}
+      else
+        .table-responsive.text-center
+          table.table.table-striped.table-bordered
+            thead.thead-dark
+              tr
+                th ?
+            tbody
+              tr
+                td
+                  | No data available ! Please add data
+

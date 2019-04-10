@@ -1,0 +1,16 @@
+extends ../layout
+block header
+  include ../_shared/navbar
+block footer
+  include ../_shared/footer
+block content
+  .container
+    .row
+      h5(style="margin: 0 auto") D3 Chart
+    br
+    .row
+      svg(width="960" height="960" style="margin: 0 auto")
+  p#d3json-data(style="display:none") #{d3json}
+block js
+  script(src="https://d3js.org/d3.v4.min.js")
+  script(src='/js/chart.js', type='text/javascript')

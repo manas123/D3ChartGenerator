@@ -1,0 +1,26 @@
+extends ../layout
+block header
+  include ../_shared/navbar
+block footer
+  include ../_shared/footer
+block content
+  .register
+    .container
+      .row
+        .col-md-6.m-auto
+          h1.display-4.text-center Sign Up
+          p.lead.text-center Create your Opex account
+          form.form(method="post",action='signup')
+            .form-group
+              input.form-control(id="firstname" type="text" name="firstname" placeholder="First Name")
+            .form-group
+              input.form-control(id="lastname" type="text" name="lastname" placeholder="Last Name")
+            .form-group
+              input.form-control(class="email" type="email" name="email" placeholder="Email Address")
+            .form-group
+              input.form-control(id="phoneno" type="number" name="phoneno" placeholder="Mobile Number")
+            .form-group
+              input.form-control(class="password" type="password" name="password" placeholder="Password")
+            .form-group
+              input.form-control(id="confirm_password" type="password" name="confirm_password" placeholder="Re-enter Password")
+            input.btn.btn-info.btn-block.mt-4(type="submit")
