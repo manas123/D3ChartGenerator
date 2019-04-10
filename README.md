@@ -12,13 +12,13 @@ npm start
 
 ## Stack and Packages:
 
-NodeJs
-Postgresql
-Pug
-D3.js
+NodeJs  
+Postgresql  
+Pug  
+D3.js  
 Passport
 
 ## public account: Login credentials
 
-email: admin@gmail.com
+email: admin@gmail.com  
 password: admin
